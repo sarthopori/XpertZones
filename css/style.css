@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* Header */
+.logo-bar {
+  background: #13415b;
+  padding: 10px 20px;
+}
+.logo {
+  height: 50px;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  text-align: center;
+}
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+.banner-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: #00b4d8;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* Sections */
+section {
+  padding: 40px 20px;
+  text-align: center;
+}
+.about p {
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+}
+.quote blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #13415b;
+}
+
+/* Team */
+.team-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.team-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+}
+.team-card img {
+  width: 100%;
+  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Payment logos */
+.logo-slider {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+.logo-slider img {
+  height: 50px;
+  margin: 0 15px;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Popup */
+#saveTimeBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #13415b;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+}
+.popup-content {
+  background: #fff;
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background: #13415b;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xpert Zones — Digital Services</title>
+  <meta name="description" content="Xpert Zones: creative digital solutions — design, web, marketing, and growth." />
+  <!-- Performance tweaks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0ea5e9;          /* Brand Blue */
+      --accent:#06b6d4;         /* Accent Cyan */
+      --dark:#0f172a;           /* Dark background */
+      --dark-2:#1e293b;         /* Gradient end */
+      --g900:#111827; --g800:#1f2937; --g400:#9ca3af; --g300:#d1d5db; --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--g300);background:linear-gradient(135deg,var(--dark) 0%,var(--dark-2) 100%);scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:1120px;margin-inline:auto;padding:0 24px}
+    .section{padding:56px 0}
+    @media (min-width:768px){ .section{padding:72px 0} }
+
+    /* Header */
+    .header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--g800)}
+    .brand{display:flex;gap:10px;align-items:center;justify-content:center;padding:14px 0}
+    .brand img{height:32px;width:auto}
+    .brand span{font-weight:800;font-size:20px;color:var(--brand)}
+
+    /* Cards & wrappers */
+    .card{background:#0f172acc;border:1px solid var(--g800);border-radius:18px;padding:28px}
+    .card:hover{border-color:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .glow-wrap{border-radius:16px;background:linear-gradient(90deg,var(--brand),var(--accent));padding:2px}
+    .glow-inner{background:var(--dark);border-radius:14px;padding:28px}
+    .tech{background-image:url('https://www.transparenttextures.com/patterns/circles.png');opacity:.05}
+    .center{text-align:center}
+
+    /* Titles */
+    h1,h2,h3{color:#fff;margin:0}
+    .title-lg{font-weight:800;line-height:1.15;font-size:34px}
+    .title-md{font-weight:800;line-height:1.15;font-size:28px}
+    @media (min-width:768px){ .title-lg{font-size:44px} .title-md{font-size:34px} }
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+         padding:12px 22px;border-radius:9999px;font-weight:700;color:#fff;
+         background:linear-gradient(90deg,var(--brand),var(--accent));box-shadow:0 8px 24px rgba(0,0,0,.35);transition:.25s}
+    .btn:hover{opacity:.92;transform:translateY(-1px)}
+
+    /* Grid */
+    .grid{display:grid;gap:22px}
+    .grid-3{grid-template-columns:repeat(1,minmax(0,1fr))}
+    @media (min-width:640px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* Service cards */
+    .svc{background:#0f172a;border:1px solid var(--g800);border-radius:18px;padding:24px;transition:.25s}
+    .svc:hover{border-color:var(--accent);transform:translateY(-3px)}
+    .svc h3{font-size:18px;font-weight:700;margin-bottom:6px}
+
+    /* Team */
+    .avatar{width:88px;height:88px;border-radius:9999px;object-fit:cover;margin:0 auto 10px;border:2px solid #0b1220}
+
+    /* Partners marquee */
+    .marquee{overflow:hidden;position:relative;border:1px solid var(--g800);border-radius:16px;background:#0f172acc}
+    .marquee__track{display:flex;gap:36px;align-items:center;white-space:nowrap;
+                    animation:scrollLeft 24s linear infinite; padding:18px}
+    .marquee img{height:34px;width:auto;opacity:.9;filter:grayscale(30%);transition:opacity .2s}
+    .marquee img:hover{opacity:1;filter:none}
+    @keyframes scrollLeft{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-50%)}
+    }
+
+    /* Contact split */
+    .split{display:grid;gap:28px}
+    @media (min-width:900px){.split{grid-template-columns:1fr 1fr}}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--g800);text-align:center;padding:26px 0;color:#8b99a9}
+
+    /* Floating button */
+    .fab{position:fixed;right:18px;bottom:18px;z-index:60}
+    .fab .btn{padding:12px 18px;font-weight:700}
+
+    /* Modal (shared for Hero + FAB) */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+           display:none;align-items:center;justify-content:center;z-index:70}
+    .modal.open{display:flex}
+    .modal__card{position:relative;max-width:420px;width:92%;background:#0f172a;border:1px solid var(--accent);
+                 border-radius:16px;padding:22px;text-align:center}
+    .modal__close{position:absolute;top:10px;right:10px;border:0;background:transparent;color:#e2e8f0;
+                  font-size:20px;cursor:pointer}
+
+    /* Spacing tweaks between sections */
+    .tight{padding-top:44px;padding-bottom:44px}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="brand">
+        <img src="logo.png" alt="Xpert Zones Logo" loading="eager">
+        <span>Xpert Zones</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container">
+      <div class="glow-wrap">
+        <div class="glow-inner tech center">
+          <h1 class="title-lg">Tired of endless clicks? <span style="color:var(--accent)">We're a message away.</span></h1>
+          <p style="margin-top:8px;color:#cbd5e1">Your perfect project starts with one simple text.</p>
+          <div style="margin-top:18px">
+            <button class="btn" id="openQuote">Get My Free Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section tight">
+    <div class="container">
+      <div class="card center">
+        <h2 class="title-md">Your Digital Dream Team</h2>
+        <p style="margin:14px auto 0;max-width:820px;color:#cbd5e1">
+          Need to grow your business online? <strong style="color:var(--accent)">Xpert Zones</strong> delivers
+          creative digital solutions that get results — from design and development to marketing and growth.
+          Start your project with our expert team today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section tight" id="services">
+    <div class="container center">
+      <h2 class="title-md">Our Services</h2>
+      <p style="margin-top:6px;color:#94a3b8">The Expertise You Need to Succeed Online.</p>
+
+      <div style="margin-top:22px" class="grid grid-3">
+        <div class="svc"><h3>Graphic Design</h3><p>Logos, branding, and engaging visuals.</p></div>
+        <div class="svc"><h3>Web Design &amp; Development</h3><p>Modern websites, landing pages, and UI/UX.</p></div>
+        <div class="svc"><h3>Digital Marketing</h3><p>SEO, campaigns, and strategies for growth.</p></div>
+        <div class="svc"><h3>Google Ads &amp; Paid Media</h3><p>Targeted ads and analytics for conversions.</p></div>
+        <div class="svc"><h3>Social Media Management</h3><p>Content creation, growth, and engagement.</p></div>
+        <div class="svc"><h3>&amp; More…</h3><p>Flexible digital solutions tailored to your needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section tight" id="team">
+    <div class="container center">
+      <h2 class="title-md">Our Team</h2>
+      <p style="margin-top:6px;color:#94a3b8">Meet the minds powering Xpert Zones</p>
+
+      <div style="margin-top:22px" class="grid grid-3">
+        <div class="card">
+          <img class="avatar" src="Shachindra.jpg" alt="Shachindra Nath Mondal">
+          <h3 style="color:#fff;font-weight:700">Shachindra Nath Mondal</h3>
+          <p style="color:var(--accent);margin:2px 0 4px">Chief Operations Officer (COO)</p>
+          <p>Oversees full-scale operations and leads client communication to ensure smooth project execution.</p>
+        </div>
+        <div class="card">
+          <img class="avatar" src="Sanjoy.jpg" alt="Sanjoy Kumar Paul">
+          <h3 style="color:#fff;font-weight:700">Sanjoy Kumar Paul</h3>
+          <p style="color:var(--accent);margin:2px 0 4px">Chief Design Officer (CDO)</p>
+          <p>Leads creative strategy with 8+ years of experience to deliver impactful and professional visuals.</p>
+        </div>
+        <div class="card">
+          <img class="avatar" src="Indrojit.jpg" alt="Indrojit Mondal">
+          <h3 style="color:#fff;font-weight:700">Indrojit Mondal</h3>
+          <p style="color:var(--accent);margin:2px 0 4px">Chief Technology Officer (CTO)</p>
+          <p>Heads our web engineering — secure, high-performance, and scalable platforms that are future-proof.</p>
+        </div>
+        <div class="card">
+          <img class="avatar" src="Shib.jpg" alt="Shib Biswas">
+          <h3 style="color:#fff;font-weight:700">Shib Biswas</h3>
+          <p style="color:var(--accent);margin:2px 0 4px">Google Ads Expert</p>
+          <p>Plans, launches, and optimizes high-converting campaigns focused on real ROI and measurable growth.</p>
+        </div>
+        <div class="card">
+          <img class="avatar" src="Sapnil.jpg" alt="Sapnil Pal">
+          <h3 style="color:#fff;font-weight:700">Sapnil Pal</h3>
+          <p style="color:var(--accent);margin:2px 0 4px">Chief Marketing Officer (CMO)</p>
+          <p>Owns SEO and social strategy to grow visibility, engagement, and long-term brand reach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Partners (continuous marquee) -->
+  <section class="section tight" id="partners">
+    <div class="container">
+      <h2 class="title-md center">Our Payment Partners</h2>
+      <p class="center" style="margin-top:6px;color:#94a3b8">Trusted platforms we work with</p>
+      <div class="marquee" style="margin-top:18px">
+        <div class="marquee__track">
+          <!-- First set -->
+          <img src="paylogo1.png" alt="Partner 1" loading="lazy">
+          <img src="paylogo2.png" alt="Partner 2" loading="lazy">
+          <img src="paylogo3.png" alt="Partner 3" loading="lazy">
+          <img src="paylogo4.png" alt="Partner 4" loading="lazy">
+          <img src="paylogo5.png" alt="Partner 5" loading="lazy">
+          <img src="paylogo6.png" alt="Partner 6" loading="lazy">
+          <!-- Duplicate set for seamless loop -->
+          <img src="paylogo1.png" alt="Partner 1" loading="lazy">
+          <img src="paylogo2.png" alt="Partner 2" loading="lazy">
+          <img src="paylogo3.png" alt="Partner 3" loading="lazy">
+          <img src="paylogo4.png" alt="Partner 4" loading="lazy">
+          <img src="paylogo5.png" alt="Partner 5" loading="lazy">
+          <img src="paylogo6.png" alt="Partner 6" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="card">
+        <h2 class="title-md center">Start Your Project Today</h2>
+        <p class="center" style="margin-top:8px;color:#94a3b8">Let’s collaborate and take your brand to the next level.</p>
+
+        <div class="split" style="margin-top:20px">
+          <!-- Contact details -->
+          <div>
+            <h3 style="color:#fff;margin-bottom:10px;font-weight:700">Contact Us</h3>
+            <p><strong>Email:</strong> <a href="mailto:support@xpertzones.com" style="color:var(--brand)">support@xpertzones.com</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/message/5W3FQ6FUGLKLD1" target="_blank" rel="noopener" style="color:var(--brand)">+880 1521 453393</a></p>
+            <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
+              <a href="https://www.facebook.com/Xpertzones/" target="_blank" rel="noopener" class="btn" style="padding:8px 14px">Facebook</a>
+              <a href="https://www.freelancer.com/u/Sanjoypl15" target="_blank" rel="noopener" class="btn" style="padding:8px 14px">LinkedIn</a>
+              <a href="https://www.youtube.com/@IdentityMotion" target="_blank" rel="noopener" class="btn" style="padding:8px 14px">YouTube</a>
+            </div>
+          </div>
+
+          <!-- Why choose us -->
+          <div>
+            <h3 style="color:#fff;margin-bottom:10px;font-weight:700">Why Choose Us?</h3>
+            <ul style="margin:0;padding-left:18px;line-height:1.7">
+              <li>Over 8 years of proven digital expertise</li>
+              <li>Creative team of 10+ professionals</li>
+              <li>End-to-end services: Design, Development & Marketing</li>
+              <li>Focused on results, growth, and client satisfaction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Xpert Zones — <span style="color:#9dd8ff">Your Partner in Digital Growth</span>
+    </div>
+  </footer>
+
+  <!-- Floating Save Time button -->
+  <div class="fab"><button class="btn" id="openFab">Save Time</button></div>
+
+  <!-- Popup (shared) -->
+  <div class="modal" id="quoteModal" aria-hidden="true">
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+      <button class="modal__close" id="closeModal" aria-label="Close">✕</button>
+      <h3 id="quoteTitle" class="title-md" style="font-size:22px">Quick Contact</h3>
+      <p style="margin-top:10px"><strong>Email:</strong> <a href="mailto:support@xpertzones.com" style="color:var(--brand)">support@xpertzones.com</a></p>
+      <p style="margin-top:6px"><strong>WhatsApp:</strong> <a href="https://wa.me/message/5W3FQ6FUGLKLD1" target="_blank" rel="noopener" style="color:var(--brand)">+880 1521 453393</a></p>
+      <div style="margin-top:16px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+        <a class="btn" style="padding:10px 16px" href="https://www.facebook.com/Xpertzones/" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" style="padding:10px 16px" href="https://www.freelancer.com/u/Sanjoypl15" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" style="padding:10px 16px" href="https://www.youtube.com/@IdentityMotion" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal logic (one modal, two openers)
+    const modal = document.getElementById('quoteModal');
+    const openers = [document.getElementById('openQuote'), document.getElementById('openFab')];
+    const closeBtn = document.getElementById('closeModal');
+
+    function openModal(){ modal.classList.add('open'); }
+    function closeModal(){ modal.classList.remove('open'); }
+
+    openers.forEach(btn => btn && btn.addEventListener('click', openModal));
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
